@@ -67,7 +67,7 @@ window.cookies = {
             console.error(this.error.msgCookieEnabled);
         }
     },
-    get: function (name) {
+    getAll: function () {
         if (navigator.cookieEnabled) {
             if (document.cookie != "") {
                 let arr1 = [],
@@ -78,13 +78,22 @@ window.cookies = {
                     arr1 = cookieStr.split("; ");
                     for (let i = 0, c = arr1.length; i < c; i++) {
                         arr2 = arr1[i].split("=");
-                        obj[arr2[0]] = arr2[1];
+                        obj[arr2[0]] = decodeURIComponent(arr2[1]);
                     }
                 } else {
                     arr2 = cookieStr.split("=");
-                    obj[arr2[0]] = arr2[1];
+                    obj[arr2[0]] = decodeURIComponent(arr2[1]);
                 }
-                return decodeURIComponent(obj[name]);
+                return obj;
+            }
+        } else {
+            console.error(this.error.msgCookieEnabled);
+        }
+    },
+    get: function (name) {
+        if (navigator.cookieEnabled) {
+            if (document.cookie != "") {                
+                return this.getAll()[name];
             }
         } else {
             console.error(this.error.msgCookieEnabled);

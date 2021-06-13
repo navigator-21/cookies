@@ -3,7 +3,7 @@ This object is for working with cookies in JS environments.
 
 Обект cookies обладает тримя методами:
 
-	1. set() - принимает обект из 8 опций {} :
+	1. set(options={}) - принимает обект из 8 опций:
 
         ---------------------------------------------------------------------------------------- 
 
@@ -48,4 +48,60 @@ This object is for working with cookies in JS environments.
 
         ---------------------------------------------------------------------------------------- 
 
-    2. get() - 
+    2. getAll() - Возвращает масиво подобный обект с коллекцией всех кук на сайте.
+
+    3. get(name) - Возвращает значение по названию куки.
+
+    4. del(name) - Удаляет куку по названию.
+
+
+
+
+
+   Примеры использования :
+
+   Установка куки огранечением времени жизни по опции maxage:
+
+        const maxAge = (((60 * 60) * 24) * 30);
+        cookies.set({
+            name:"catalog", 
+            value:"blocks", 
+            maxage: maxAge,
+            path:"/catalog", 
+            domain : "site.com",
+            secure : true,
+            samesite : "lax",
+        });
+
+    Установка куки c точной датой удоления:
+
+    
+        cookies.set({
+            name:"catalog", 
+            value:"blocks",        
+            path:"/catalog", 
+            domain : "site.com",
+            secure : true,
+            samesite : "lax",
+            expires : {
+                year:       "2022", // год
+                month:      "10",   // месяц
+                date:       "26",   // день 
+                hours:      "13",   // часы
+                minutes:    "57",   // минуты
+                seconds:    "10",   // секунды
+              }, 
+        });
+
+
+    Получить куки по названию:
+
+        console.log(cookies.get("catalog"));
+
+    Получить обект со всеми куками:
+
+        console.log(cookies.getAll());
+
+    Удалить куки по названию :
+        cookies.del("catalog");
+        
