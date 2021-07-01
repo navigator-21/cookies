@@ -8,19 +8,19 @@ The cookie object has three methods:
 
         ---------------------------------------------------------------------------------------- 
 
-	1. name: "name", - Cookie name (required parameter)
+	1). name: "name", - Cookie name (required parameter)
 
         -------------------------------------------------- --------------------------------------
 
-        2.value: "value", - Cookie value (empty string by default)
+        2). value: "value", - Cookie value (empty string by default)
 
         -------------------------------------------------- --------------------------------------
 
-        3. maxage: 2592000, - Cookie lifetime, set in seconds <((60 * 60) * 24) * 30 = 30 days>, alternative to expires, defines the cookie expiration time in seconds from the 	current moment.
+        3). maxage: 2592000, - Cookie lifetime, set in seconds <((60 * 60) * 24) * 30 = 30 days>, alternative to expires, defines the cookie expiration time in seconds from the 	current moment.
 
         -------------------------------------------------- --------------------------------------
 
-        4.expires: {
+        4). expires: {
             year: "xxxx", // year
             month: "xx", // month
             date: "xx", // day
@@ -32,19 +32,19 @@ The cookie object has three methods:
 
         -------------------------------------------------- --------------------------------------
 
-        5. domain: "site.com" - the domain option allows us to allow access to cookies for subdomains.
+        5). domain: "site.com" - the domain option allows us to allow access to cookies for subdomains.
 
         ----------------------------------------------------------------------------------------    
 
-       	6. path: "/ mypath", URL-prefix of the path, cookies will be available for pages under this path. If a cookie is set with path: "/ admin", then it will be available on 		the pages "/ admin" and "/ admin / something", but not on the "/ home" or "/ adminpage" pages. By default, the root path: "/" is specified as the path so that 			our cookies are available on all pages of the site.
+       	6). path: "/ mypath", URL-prefix of the path, cookies will be available for pages under this path. If a cookie is set with path: "/ admin", then it will be available on 		the pages "/ admin" and "/ admin / something", but not on the "/ home" or "/ adminpage" pages. By default, the root path: "/" is specified as the path so that 			our cookies are available on all pages of the site.
             
         -------------------------------------------------- --------------------------------------
 
-        7. secure: true - Makes cookies available only when using HTTPS. (default false)
+        7). secure: true - Makes cookies available only when using HTTPS. (default false)
 
         -------------------------------------------------- --------------------------------------
 
-        8. samesite: "strict || lax", // prevents the browser from sending cookies with requests from outside, helps prevent XSRF attacks. (Disabled by default)
+        8). samesite: "strict || lax", // prevents the browser from sending cookies with requests from outside, helps prevent XSRF attacks. (Disabled by default)
 
         -------------------------------------------------- --------------------------------------
 2. getAll () - Returns an array-like object with a collection of all the cookies on the site.
