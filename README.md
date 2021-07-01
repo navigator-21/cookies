@@ -48,46 +48,47 @@ Examples of using :
 
 Setting cookies by limiting the lifetime of the maxage option:
 
-const maxAge = (((60 * 60) * 24) * 30);
-cookies.set ({
-    name: "catalog",
-    value: "blocks",
-    maxage: maxAge,
-    path: "/ catalog",
-    domain: "site.com",
-    secure: true,
-    samesite: "lax",
-});
+	const maxAge = (((60 * 60) * 24) * 30);
+
+	cookies.set ({
+	    name: "catalog",
+	    value: "blocks",
+	    maxage: maxAge,
+	    path: "/ catalog",
+	    domain: "site.com",
+	    secure: true,
+	    samesite: "lax",
+	});
+
 
 Setting a cookie with an exact date of deletion:
 
-
-cookies.set ({
-    name: "catalog",
-    value: "blocks",
-    path: "/ catalog",
-    domain: "site.com",
-    secure: true,
-    samesite: "lax",
-    expires: {
-	year: "2022", // year
-	month: "10", // month
-	date: "26", // day
-	hours: "13", // hours
-	minutes: "57", // minutes
-	seconds: "10", // seconds
-      },
-});
+	cookies.set ({
+	    name: "catalog",
+	    value: "blocks",
+	    path: "/ catalog",
+	    domain: "site.com",
+	    secure: true,
+	    samesite: "lax",
+	    expires: {
+		year: "2022", // year
+		month: "10", // month
+		date: "26", // day
+		hours: "13", // hours
+		minutes: "57", // minutes
+		seconds: "10", // seconds
+	      },
+	});
 
 
 Get cookies by name:
 
-console.log (cookies.get ("catalog"));
+	console.log (cookies.get ("catalog"));
 
 Get an object with all cookies:
 
-console.log (cookies.getAll ());
+	console.log (cookies.getAll ());
 
 Delete cookies by name:
-cookies.del ("catalog");
+	cookies.del ("catalog");
         
