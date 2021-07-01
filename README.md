@@ -1,107 +1,105 @@
 # cookies
 This object is for working with cookies in JS environments.
 
-ќбект cookies обладает трим€ методами:
 
-	1. set(options={}) - принимает обект из 8 опций:
+The cookie object has three methods:
 
-        ---------------------------------------------------------------------------------------- 
-
-		1. name : "name",   -   Ќазвание cookie (об€зательный параметер)
+1. set (options = {}) - takes an object with 8 options:
 
         ---------------------------------------------------------------------------------------- 
 
-        2. value : "value",    -   «начение cookie (по умолчанию пуста строка)
+	1. name: "name", - Cookie name (required parameter)
 
-        ---------------------------------------------------------------------------------------- 
+        -------------------------------------------------- --------------------------------------
 
-        3. maxage : 2592000 ,   -   ¬ рем€ жизни cookie, выставл€етс€ в секундах < ((60*60)*24)*30 = 30 дней >, альтернатива expires, определ€ет срок действи€ куки в секундах с текущего момента. 
+        2.value: "value", - Cookie value (empty string by default)
 
-        ---------------------------------------------------------------------------------------- 
+        -------------------------------------------------- --------------------------------------
 
-        4. expires : {
-            year:       "xxxx", // год
-            month:      "xx",   // мес€ц
-            date:       "xx",   // день 
-            hours:      "xx",   // часы
-            minutes:    "xx",   // минуты
-            seconds:    "xx",   // секунды
-          }, 
-          -   Ёто обект из набора опций которые позвол€ют выставить точную дату и врем€ удалени€ cookie (необ€зательный параметер)
+        3. maxage: 2592000, - Cookie lifetime, set in seconds <((60 * 60) * 24) * 30 = 30 days>, alternative to expires, defines the cookie expiration time in seconds from the 	current moment.
 
-        ---------------------------------------------------------------------------------------- 
+        -------------------------------------------------- --------------------------------------
 
-        5. domain : "site.com"   -   опци€ domain позвол€ет нам разрешить доступ к куки дл€ поддоменов.
+        4.expires: {
+            year: "xxxx", // year
+            month: "xx", // month
+            date: "xx", // day
+            hours: "xx", // hours
+            minutes: "xx", // minutes
+            seconds: "xx", // seconds
+          },
+          - This is an object from a set of options that allow you to set the exact date and time of cookie deletion (optional parameter)
+
+        -------------------------------------------------- --------------------------------------
+
+        5. domain: "site.com" - the domain option allows us to allow access to cookies for subdomains.
 
         ----------------------------------------------------------------------------------------    
 
-        6. path : "/mypath",    URL-префикс пути, куки будут доступны дл€ страниц под этим путЄм. ≈сли куки установлено с path:"/admin", то оно будет доступно на страницах "/admin" и "/admin/something", 
-                                но не на страницах "/home" или "/adminpage". ѕо умолчанию указан в качестве пути корень path:"/", чтобы наши куки были доступны на всех страницах сайта.
+       	6. path: "/ mypath", URL-prefix of the path, cookies will be available for pages under this path. If a cookie is set with path: "/ admin", then it will be available on 		the pages "/ admin" and "/ admin / something", but not on the "/ home" or "/ adminpage" pages. By default, the root path: "/" is specified as the path so that 			our cookies are available on all pages of the site.
             
-        ----------------------------------------------------------------------------------------    
+        -------------------------------------------------- --------------------------------------
 
-        7. secure : true   -   ƒелает куки доступным только при использовании HTTPS. (по умолчанию false)
+        7. secure: true - Makes cookies available only when using HTTPS. (default false)
 
-        ---------------------------------------------------------------------------------------- 
+        -------------------------------------------------- --------------------------------------
 
-        8. samesite : "strict || lax", // запрещает браузеру отправл€ть куки с запросами, поступающими извне, помогает предотвратить XSRF-атаки.(по умолчанию отключена)
+        8. samesite: "strict || lax", // prevents the browser from sending cookies with requests from outside, helps prevent XSRF attacks. (Disabled by default)
 
-        ---------------------------------------------------------------------------------------- 
+        -------------------------------------------------- --------------------------------------
+2. getAll () - Returns an array-like object with a collection of all the cookies on the site.
 
-    2. getAll() - ¬озвращает масиво подобный обект с коллекцией всех кук на сайте.
+3. get (name) - Returns a value by the name of the cookie.
 
-    3. get(name) - ¬озвращает значение по названию куки.
-
-    4. del(name) - ”дал€ет куку по названию.
-
+4. del (name) - Deletes cookies by name.
 
 
 
 
-   ѕримеры использовани€ :
+   Examples of using :
 
-   ”становка куки огранечением времени жизни по опции maxage:
+   Setting cookies by limiting the lifetime of the maxage option:
 
         const maxAge = (((60 * 60) * 24) * 30);
-        cookies.set({
-            name:"catalog", 
-            value:"blocks", 
+        cookies.set ({
+            name: "catalog",
+            value: "blocks",
             maxage: maxAge,
-            path:"/catalog", 
-            domain : "site.com",
-            secure : true,
-            samesite : "lax",
+            path: "/ catalog",
+            domain: "site.com",
+            secure: true,
+            samesite: "lax",
         });
 
-    ”становка куки c точной датой удолени€:
+    Setting a cookie with an exact date of deletion:
 
     
-        cookies.set({
-            name:"catalog", 
-            value:"blocks",        
-            path:"/catalog", 
-            domain : "site.com",
-            secure : true,
-            samesite : "lax",
-            expires : {
-                year:       "2022", // год
-                month:      "10",   // мес€ц
-                date:       "26",   // день 
-                hours:      "13",   // часы
-                minutes:    "57",   // минуты
-                seconds:    "10",   // секунды
-              }, 
+        cookies.set ({
+            name: "catalog",
+            value: "blocks",
+            path: "/ catalog",
+            domain: "site.com",
+            secure: true,
+            samesite: "lax",
+            expires: {
+                year: "2022", // year
+                month: "10", // month
+                date: "26", // day
+                hours: "13", // hours
+                minutes: "57", // minutes
+                seconds: "10", // seconds
+              },
         });
 
 
-    ѕолучить куки по названию:
+    Get cookies by name:
 
-        console.log(cookies.get("catalog"));
+        console.log (cookies.get ("catalog"));
 
-    ѕолучить обект со всеми куками:
+    Get an object with all cookies:
 
-        console.log(cookies.getAll());
+        console.log (cookies.getAll ());
 
-    ”далить куки по названию :
-        cookies.del("catalog");
+    Delete cookies by name:
+        cookies.del ("catalog");
         
